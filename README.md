@@ -1,5 +1,8 @@
 # React course 1
 
+Etudiant : Schmitt Alexandre 
+Licence pro prog web
+
 ## Getting started
 
 - Fork project to your personal repo
