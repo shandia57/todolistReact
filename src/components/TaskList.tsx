@@ -4,6 +4,7 @@ import TaskItems from './TaskItem';
 import TaskEnded from './TaskEnded';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 import Task from './../models/Task';
 
 class Header extends Component {
@@ -101,6 +102,30 @@ class Header extends Component {
         this.setState({ taskValue: this.taskList });
     }
 
+    filterTaskAscPriority = () => {
+        this.setState({
+            taskValue: this.state.taskValue.sort((a: any, b: any) => {
+                return a.priority - b.priority;
+            })
+        })
+    }
+
+    filterTaskDescPriority = () => {
+        this.setState({
+            taskValue: this.state.taskValue.sort((a: any, b: any) => {
+                return b.priority - a.priority;
+            })
+        })
+    }
+
+    switchFilter = (e: any) => {
+        if (e.target.value === 'asc') {
+            this.filterTaskAscPriority();
+        } else {
+            this.filterTaskDescPriority();
+        }
+    }
+
     render() {
         return (
             <div className="container">
@@ -166,6 +191,12 @@ class Header extends Component {
                         <Button id="btnAddNewTask" variant="info" onClick={this.addNewTask}>Add this task</Button>
                     </Modal.Footer>
                 </Modal.Dialog>
+
+                <Form.Select onChange={this.switchFilter} aria-label="Default select example">
+                    <option value="default">Filter by priority</option>
+                    <option value="asc">Priority asc</option>
+                    <option value="desc">Priority desc</option>
+                </Form.Select>
 
 
                 <div className="row">

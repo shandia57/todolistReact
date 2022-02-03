@@ -22,12 +22,12 @@ class TaskItems extends Component<props>{
 
     switch (color) {
       case "1":
-        return "1px solid green";
+        return "2px solid green";
       case "2":
-        return "1px solid orange";
+        return "2px solid orange";
 
       case "3":
-        return "1px solid red";
+        return "2px solid red";
     }
   }
 
