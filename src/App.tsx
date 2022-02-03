@@ -11,7 +11,7 @@ import Header from './components/TaskList';
 function App() {
   return (
     <div className="App">
-      <h1 className="textCenter">Task to be done</h1>
+      {/* <h1 className="textCenter">Task to be done</h1> */}
       <Header></Header>
     </div>
   )

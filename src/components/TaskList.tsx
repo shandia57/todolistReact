@@ -130,67 +130,56 @@ class Header extends Component {
         return (
             <div className="container">
 
-                <Modal.Dialog style={{ display: "block" }}>
-                    <Modal.Header >
-                        <Modal.Title>Create a new task</Modal.Title>
-                    </Modal.Header>
+                <nav>
+                    <div className="navHeader">
+                        <h1>Create a new task</h1>
+                    </div>
+                    <div className="container">
+                        <div className="row">
+                            {/* Title task */}
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Task title</label>
+                                    <input id="title" type="text" className="form-control" />
 
-                    <Modal.Body>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col">
-                                    <div className="mb-3">
-                                        <label className="form-label">Task title</label>
-                                        <input id="title" type="text" className="form-control" />
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col">
-                                    <div className="mb-3">
-                                        <label className="form-label">Description</label>
-                                        <input id="description" type="text" className="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="row">
-
-
-
-                                <div className="col">
-                                    <div className="mb-3">
-                                        <label className="form-label">Assigned to</label>
-                                        <select id="assignedTo" className="form-select" aria-label="Default select example">
-                                            <option selected value="">Who ..</option>
-                                            <option value="tanako">Tanako</option>
-                                            <option value="akiko">Akiko</option>
-                                            <option value="genji">Genji</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div className="mb-3">
-                                        <label className="form-label">Priority</label>
-                                        <select id="priority" className="form-select" aria-label="Default select example">
-                                            <option selected value="">Select a priority level</option>
-                                            <option value="1">Not important</option>
-                                            <option value="2">Important</option>
-                                            <option value="3">Now</option>
-                                        </select>
-                                    </div>
                                 </div>
                             </div>
 
+                            {/* Description task */}
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Description</label>
+                                    <input id="description" type="text" className="form-control" />
+                                </div>
+                            </div>
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Assigned to</label>
+                                    <select id="assignedTo" className="form-select" aria-label="Default select example">
+                                        <option selected value="">Who ..</option>
+                                        <option value="tanako">Tanako</option>
+                                        <option value="akiko">Akiko</option>
+                                        <option value="genji">Genji</option>
+                                    </select>
+                                </div>
+                                <div className="mb-3">
+                                    <label className="form-label">Priority</label>
+                                    <select id="priority" className="form-select" aria-label="Default select example">
+                                        <option selected value="">Select a priority level</option>
+                                        <option value="1">Not important</option>
+                                        <option value="2">Important</option>
+                                        <option value="3">Now</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-
-                    </Modal.Body>
-
-                    <Modal.Footer>
+                    </div>
+                    <div className="navFooter">
                         <Button id="btnSaveChanges" variant="warning" onClick={this.saveChanges} style={{ display: "none" }}>Save changes</Button>
                         <Button id="btnAddNewTask" variant="info" onClick={this.addNewTask}>Add this task</Button>
-                    </Modal.Footer>
-                </Modal.Dialog>
+                    </div>
+                </nav>
+
 
                 <Form.Select onChange={this.switchFilter} aria-label="Default select example">
                     <option value="default">Filter by priority</option>
@@ -199,7 +188,7 @@ class Header extends Component {
                 </Form.Select>
 
 
-                <div className="row">
+                <div className="row task">
                     <div className="col">
                         <TaskItems items={this.state.taskValue} edit={this.editItem} finish={this.finishedItem} delete={this.deleteItem} onDragEnd={this.onDragEnd} ></TaskItems>
                     </div>
