@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import Task from "./../models/Task";
+import Task from "../../../models/Task";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
-
-
 
 
 type props = {
@@ -15,7 +12,7 @@ type props = {
 
 };
 
-class TaskItems extends Component<props>{
+class TaskStarted extends Component<props>{
 
 
   returColor(color: string) {
@@ -30,10 +27,6 @@ class TaskItems extends Component<props>{
         return "2px solid red";
     }
   }
-
-
-
-
 
   render() {
 
@@ -99,4 +92,4 @@ class TaskItems extends Component<props>{
 
 
 
-export default TaskItems;
+export default TaskStarted;

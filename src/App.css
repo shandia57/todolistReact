@@ -18,52 +18,10 @@ html {
   h1{
     color:rgb(221, 221, 221);
   }
-  
-  input{
-    border:2px solid transparent;
-    border-radius: 10px;
-    padding: 10px;
-    width: 70%;
+
+  h2{
+    color:rgba(49, 49, 49, 0.9);
   }
-  input:focus{
-    outline-color:#f07e6e ;
-  }
-  input::placeholder{
-    text-align:center;
-  }
-
-  
-  .task{
-    margin-top: 3%;
-  }
-  
-  #listTask{
-    margin-top:10px;
-    color:white;
-    list-style: none;
-    padding:0;
-  
-  }
-
-  body > h1{
-    text-align: center;
-
-}
-
-.containerTask{
-    color:white;
-    background-color: rgba(0,0,0,0.5);
-    padding:20px;
-    border-radius:10px;
-    margin-bottom:10%;
-
-}
-
-
-.footer{
-    margin-top:1%;
-    height:30px;
-}
   
   
   
@@ -81,21 +39,4 @@ html {
 
 }
 
-/* css nav */
-nav{
-  background-color: rgba(0,0,0,0.5);
-  padding: 15px;
-  margin-bottom: 3%;
-}
 
-.navHeader{
-  text-align: center;
-  color:white;
-}
-.mb-3 label{
-  color:white;
-}
-
-.navFooter{
-  text-align: center;
-}

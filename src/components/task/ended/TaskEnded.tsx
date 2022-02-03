@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import Task from "./../models/Task";
+import Task from "../../../models/Task";
+
 function returColor(color: string) {
+    const baseColor = "2px solid ";
     switch (color) {
         case "1":
-            return "1px solid green";
+            return baseColor + "green";
 
         case "2":
-            return "1px solid orange";
+            return baseColor + "orange";
 
         case "3":
-            return "1px solid red";
+            return baseColor + "red";
     }
 }
 
@@ -17,7 +19,7 @@ const TaskEnded = (props: any) => {
 
     return (
         <div>
-            <h2>Task Ended</h2>
+            <h2>Task ended</h2>
 
             {props.items !== null
                 ? props.items.map((item: Task, index: string) => (
