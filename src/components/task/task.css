@@ -1,29 +1,19 @@
-
-  /* input{
-    border:2px solid transparent;
-    border-radius: 10px;
-    padding: 10px;
-    width: 70%;
-  }
-  input:focus{
-    outline-color:#f07e6e ;
-  }
-  input::placeholder{
-    text-align:center;
-  } */
-
 .task{
     margin-top: 3%;
   }
   
-  #listTask{
+#listTask{
     margin-top:10px;
     color:white;
     list-style: none;
     padding:0;
   
-  }
+}
 
+#btnAddNewTask, #btnSaveChanges{
+  margin: 0 auto;
+
+}
 
 .containerTask{
     color:white;

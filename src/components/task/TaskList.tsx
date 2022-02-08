@@ -41,6 +41,9 @@ class Header extends Component {
         this.setState({ taskValue: users });
         this.taskList = users;
 
+        this.showAddTaskButton();
+        this.clearAllInput();
+
 
     }
 
@@ -56,11 +59,7 @@ class Header extends Component {
                 new Task(title, description, assignedTo, priority)
             );
             this.setState({ taskValue: this.taskList });
-            (document.getElementById("title") as HTMLInputElement).value = "";
-            (document.getElementById("description") as HTMLInputElement).value = "";
-            (document.getElementById("assignedTo") as HTMLInputElement).value = "";
-            (document.getElementById("priority") as HTMLInputElement).value = "";
-
+            this.clearAllInput();
 
         } else {
             alert("Where is the papagail ?")
@@ -71,8 +70,7 @@ class Header extends Component {
 
     editItem = (e: any) => {
         this.currentIndex = e.target.name;
-        (document.getElementById("btnSaveChanges") as HTMLInputElement).setAttribute("style", "display: block");
-        (document.getElementById("btnAddNewTask") as HTMLInputElement).setAttribute("style", "display: none");
+        this.showEditButton();
         (document.getElementById("title") as HTMLInputElement).value = this.taskList[this.currentIndex].title;
         (document.getElementById("description") as HTMLInputElement).value = this.taskList[this.currentIndex].description;
         (document.getElementById("assignedTo") as HTMLInputElement).value = this.taskList[this.currentIndex].assigned;
@@ -86,8 +84,8 @@ class Header extends Component {
         this.taskList[this.currentIndex].priority = (document.getElementById("priority") as HTMLInputElement).value;
 
         this.setState({ taskValue: this.taskList });
-        (document.getElementById("btnSaveChanges") as HTMLInputElement).setAttribute("style", "display: none");
-        (document.getElementById("btnAddNewTask") as HTMLInputElement).setAttribute("style", "display: block");
+        this.showAddTaskButton();
+        this.clearAllInput();
     }
 
     finishedItem = (e: any) => {
@@ -96,7 +94,8 @@ class Header extends Component {
         this.taskList.splice(this.currentIndex, 1)
         this.setState({ taskValue: this.taskList });
         this.setState({ taskEndedValue: this.taskEnded });
-        console.log("baing baing c'est marseillle avec 3 L", this.currentIndex);
+        this.showAddTaskButton();
+        this.clearAllInput();
 
     }
 
@@ -104,6 +103,8 @@ class Header extends Component {
         this.currentIndex = e.target.name;
         this.taskList.splice(this.currentIndex, 1)
         this.setState({ taskValue: this.taskList });
+        this.showAddTaskButton();
+        this.clearAllInput();
     }
 
     filterTaskAscPriority = () => {
@@ -128,6 +129,23 @@ class Header extends Component {
         } else {
             this.filterTaskDescPriority();
         }
+    }
+
+    clearAllInput = () => {
+        (document.getElementById("title") as HTMLInputElement).value = "";
+        (document.getElementById("description") as HTMLInputElement).value = "";
+        (document.getElementById("assignedTo") as HTMLInputElement).value = "";
+        (document.getElementById("priority") as HTMLInputElement).value = "";
+    }
+
+    showEditButton = () => {
+        (document.getElementById("btnSaveChanges") as HTMLInputElement).setAttribute("style", "display: block");
+        (document.getElementById("btnAddNewTask") as HTMLInputElement).setAttribute("style", "display: none");
+    }
+
+    showAddTaskButton = () => {
+        (document.getElementById("btnSaveChanges") as HTMLInputElement).setAttribute("style", "display: none");
+        (document.getElementById("btnAddNewTask") as HTMLInputElement).setAttribute("style", "display: block");
     }
 
     render() {
