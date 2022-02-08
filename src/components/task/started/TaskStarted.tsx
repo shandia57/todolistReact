@@ -4,11 +4,11 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 
 type props = {
-  items: any,
-  edit: any;
-  finish: any
+  items: Task[],
+  edit: any,
+  finish: any,
   delete: any,
-  onDragEnd: any
+  onDragEnd: any,
 
 };
 
