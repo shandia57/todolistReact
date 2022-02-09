@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Task from "../../../models/Task";
+import Task from "../../../../../models/Task";
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 

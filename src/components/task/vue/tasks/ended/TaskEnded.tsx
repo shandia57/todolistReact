@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Task from "../../../models/Task";
+import Task from "../../../../../models/Task";
 
 function returColor(color: string) {
     const baseColor = "2px solid ";

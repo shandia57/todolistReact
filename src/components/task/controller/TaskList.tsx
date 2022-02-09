@@ -2,11 +2,11 @@ import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 
 // Components
-import TaskStarted from './started/TaskStarted';
-import TaskEnded from './ended/TaskEnded';
-import Task from '../../models/Task';
-import NavCreateNewTask from '../nav/Nav';
-import Filter from './filter/Filter';
+import TaskStarted from '../vue/tasks/started/TaskStarted';
+import TaskEnded from '../vue/tasks/ended/TaskEnded';
+import Task from '../../../models/Task';
+import NavCreateNewTask from '../vue/nav/Nav';
+import Filter from '../filter/Filter';
 
 // Css 
 import './task.css';
