@@ -5,10 +5,10 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 type props = {
   items: Task[],
-  edit: any,
-  finish: any,
-  delete: any,
-  onDragEnd: any,
+  edit(e: React.FormEvent): void,
+  finish(e: React.FormEvent): void,
+  delete(e: React.FormEvent): void,
+  onDragEnd(result: Object): void,
 
 };
 
@@ -16,15 +16,16 @@ class TaskStarted extends Component<props>{
 
 
   returColor(color: string) {
+    const baseColor = "2px solid ";
 
     switch (color) {
       case "1":
-        return "2px solid green";
+        return baseColor + "green";
       case "2":
-        return "2px solid orange";
+        return baseColor + "orange";
 
       case "3":
-        return "2px solid red";
+        return baseColor + "red";
     }
   }
 

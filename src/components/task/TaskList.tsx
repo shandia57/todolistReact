@@ -11,7 +11,17 @@ import Filter from './filter/Filter';
 // Css 
 import './task.css';
 
-class Header extends Component {
+interface destination {
+    droppableId: String;
+    index: Number;
+}
+
+interface source {
+    droppableId: String;
+    index: Number;
+}
+
+class TaskList extends Component {
     taskList: Task[] = [];
     taskEnded: Task[] = [];
     state = {
@@ -21,7 +31,7 @@ class Header extends Component {
     currentIndex = 0;
 
 
-    onDragEnd = (result: any) => {
+    onDragEnd = (result: { destination: destination; source: source; reason: String; }) => {
         const { destination, source, reason } = result;
         if (!destination || reason === 'CANCEL') {
             return;
@@ -32,10 +42,10 @@ class Header extends Component {
         }
 
         let users = Object.assign([], this.taskList);
-        const droppedUser = this.state.taskValue[source.index];
+        const droppedUser = this.state.taskValue[Number(source.index)];
 
-        users.splice(source.index, 1);
-        users.splice(destination.index, 0, droppedUser);
+        users.splice(Number(source.index), 1);
+        users.splice(Number(destination.index), 0, droppedUser);
 
 
         this.setState({ taskValue: users });
@@ -68,8 +78,8 @@ class Header extends Component {
 
     }
 
-    editItem = (e: any) => {
-        this.currentIndex = e.target.name;
+    editItem = (e: React.FormEvent): void => {
+        this.currentIndex = parseInt((e.target as HTMLInputElement).name);
         this.showEditButton();
         (document.getElementById("title") as HTMLInputElement).value = this.taskList[this.currentIndex].title;
         (document.getElementById("description") as HTMLInputElement).value = this.taskList[this.currentIndex].description;
@@ -88,8 +98,8 @@ class Header extends Component {
         this.clearAllInput();
     }
 
-    finishedItem = (e: any) => {
-        this.currentIndex = e.target.name;
+    finishedItem = (e: React.FormEvent): void => {
+        this.currentIndex = parseInt((e.target as HTMLInputElement).name);
         this.taskEnded.push(this.taskList[this.currentIndex]);
         this.taskList.splice(this.currentIndex, 1)
         this.setState({ taskValue: this.taskList });
@@ -99,8 +109,8 @@ class Header extends Component {
 
     }
 
-    deleteItem = (e: any) => {
-        this.currentIndex = e.target.name;
+    deleteItem = (e: React.FormEvent): void => {
+        this.currentIndex = parseInt((e.target as HTMLInputElement).name);
         this.taskList.splice(this.currentIndex, 1)
         this.setState({ taskValue: this.taskList });
         this.showAddTaskButton();
@@ -108,23 +118,24 @@ class Header extends Component {
     }
 
     filterTaskAscPriority = () => {
+
         this.setState({
-            taskValue: this.state.taskValue.sort((a: any, b: any) => {
-                return a.priority - b.priority;
+            taskValue: this.state.taskValue.sort((a: Task, b: Task) => {
+                return parseInt(a.priority) - parseInt(b.priority);
             })
         })
     }
 
     filterTaskDescPriority = () => {
         this.setState({
-            taskValue: this.state.taskValue.sort((a: any, b: any) => {
-                return b.priority - a.priority;
+            taskValue: this.state.taskValue.sort((a: Task, b: Task) => {
+                return parseInt(b.priority) - parseInt(a.priority);
             })
         })
     }
 
-    switchFilter = (e: any) => {
-        if (e.target.value === 'asc') {
+    switchFilter = (e: React.FormEvent) => {
+        if ((e.target as HTMLInputElement).value === 'asc') {
             this.filterTaskAscPriority();
         } else {
             this.filterTaskDescPriority();
@@ -174,4 +185,4 @@ class Header extends Component {
 
 }
 
-export default Header;
+export default TaskList;
